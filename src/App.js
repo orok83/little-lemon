@@ -1,11 +1,17 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 function App() {
   return (
-<div className="App">
-  <h1>Welcome to Little Lemon</h1>
-</div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
