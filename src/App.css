@@ -1,151 +1,397 @@
-/* Layout Containers */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 10%;
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Markazi+Text:wght@400;700&display=swap');
+
+:root {
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-orange: #EE9972;
+  --secondary-light: #EDEFEE;
+  --dark-charcoal: #333333;
 }
 
-nav ul {
+/* Reset and base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Karla', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3 {
+  font-family: 'Markazi Text', serif;
+  color: var(--dark-charcoal);
+  margin: 0;
+}
+
+/* Constrained centered container */
+.page-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Header */
+.header {
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.header-inner {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  gap: 1rem;
+  position: relative;
+}
+.logo {
+  height: 45px;
+  width: auto;
+}
+
+/* Nav links (desktop) */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
   list-style: none;
 }
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-charcoal);
+  font-weight: 700;
+  font-size: 16px;
+}
+.nav-links a:hover {
+  color: var(--primary-green);
+}
 
-/* Hero Section Layout */
+/* Hamburger button and bars */
+.menu-icon {
+  display: none; /* shown on mobile via media query */
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  align-self: center;
+}
+.bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--primary-green);
+  margin: 4px 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.bar.open:nth-child(1) {
+  transform: rotate(-45deg) translate(-4px, 6px);
+}
+.bar.open:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.bar.open:nth-child(3) {
+  transform: rotate(45deg) translate(-4px, -6px);
+}
+
+/* Hero*/
 .hero {
-  background-color: #495E57;
-  color: #EDEFEE;
+  background: var(--primary-green);
+  color: var(--secondary-light);
+  padding: 2.5rem 0 4rem 0;
+}
+.hero-inner {
   display: flex;
-  justify-content: space-between;
-  padding: 2rem 10%;
-  height: 300px; /* Fixed height for the banner */
-  position: relative;
-  margin-bottom: 100px; /* Space for the overlapping image */
+  align-items: flex-start;
+  gap: 2rem;
 }
-
 .hero-content {
-  max-width: 400px;
+  max-width: 420px;
+}
+.hero-title {
+  color: var(--primary-yellow);
+  font-size: 64px;
+  line-height: 1.02;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.5px;
+}
+.hero-sub {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+  color: var(--secondary-light);
+}
+.hero-desc {
+  font-family: 'Karla', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+.yellow-btn {
+  background: var(--primary-yellow);
+  color: var(--dark-charcoal);
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.hero img {
-  width: 350px;
-  height: 400px;
+/* Hero image */
+.hero-image-wrap {
+  flex: 0 0 360px;
+  position: relative;
+}
+.hero-image {
+  width: 360px;
+  height: 420px;
   object-fit: cover;
   border-radius: 16px;
-  position: absolute;
-  right: 10%;
-  top: 20px; /* Creates that overlapping effect from the design */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  display: block;
 }
 
-/* Specials Section (Grid) */
+/* Specials Section 
+*/
+.specials {
+  padding: 4rem 0;
+}
 .specials-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10%;
+  margin-bottom: 2rem;
+}
+.specials-header h2 {
+  font-family: 'Markazi Text', serif;
+  font-size: 64px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 1.02px;
+  margin: 0;
+  letter-spacing: -0.5px;
+
 }
 
+/* Cards grid */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 0 10% 4rem 10%;
+  gap: 1.5rem;
 }
 
+/* Card layout */
 .card {
-  background-color: #EDEFEE;
-  border-radius: 16px 16px 0 0;
+  background: var(--secondary-light);
+  border-radius: 12px;
   overflow: hidden;
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-
-/* Navigation Styling */
-nav ul {
   display: flex;
-  gap: 2rem;
-  list-style: none;
+  flex-direction: column;
+  transition: none;
+}
+
+/* Card image */
+.card-image {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content */
+.card-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Card title block now stacked vertically */
+.card-title {
+  display: flex;
+  flex-direction: row;        /* horizontal layout */
+  justify-content: space-between;
+  align-items: baseline;      /* aligns price with title baseline */
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: nowrap;          /* prevent price from wrapping under title */
+}
+
+
+/* Card title text */
+.card-title h3 {
+  font-family: 'Markazi Text', serif;
+  font-size: 18px;
+  font-weight: 700;
   margin: 0;
-  padding: 0;
+  line-height: 1.1;
+  white-space: nowrap;        
+  overflow: hidden;
+  text-overflow: ellipsis;   
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333333;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+
+
+.price {
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--secondary-orange);
+  margin: 0;
+  flex: 0 0 auto;            
+  white-space: nowrap;
 }
 
-nav ul li a:hover {
-  color: #495E57; /* Dark green on hover */
+
+
+/* Paragraph text */
+.card-content p,
+p {
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  max-width: 65ch;
 }
 
-/* Button Styles */
-.yellow-btn {
-  background-color: #F4CE14;
-  color: #333333;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 16px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.yellow-btn:hover {
-  background-color: #e2bd12;
-}
-
+/* Delivery button */
 .delivery-btn {
   background: none;
   border: none;
-  font-weight: bold;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  color: var(--dark-charcoal);
+  font-weight: 700;
   margin-top: auto;
+  cursor: pointer;
+  padding-top: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 16px;
 }
 
-/* Footer Grid Styling */
+/* Footer */
 footer {
-  background-color: #EDEFEE;
-  padding: 4rem 10%;
+  background: #d9d9d9;
+  padding: 3rem 0;
+}
+.footer-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /* Four columns for logo + 3 info sections */
-  gap: 2rem;
-  margin-top: 4rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: start;
 }
-
-footer h3 {
-  color: #495E57;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+.footer-col h3 {
+  color: var(--primary-green);
+  margin-bottom: 0.8rem;
+  font-family: 'Markazi Text', serif;
+  font-size: 18px;
+  font-weight: 700;
 }
-
-footer ul {
+.footer-col ul {
   list-style: none;
-  padding: 0;
 }
-
-footer ul li {
-  margin-bottom: 0.5rem;
-}
-
-footer a {
+.footer-col a {
   text-decoration: none;
-  color: #333333;
+  color: var(--dark-charcoal);
+  font-size: 16px;
 }
 
-footer a:hover {
-  text-decoration: underline;
+
+
+@media (max-width: 768px) {
+  /* show hamburger */
+  .menu-icon {
+    display: block;
+    z-index: 1300;
+  }
+
+  /* hide desktop nav by default */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    gap: 1rem;
+    z-index: 1250;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* ensure header and page-inner are positioned for absolute nav */
+  .header, .page-inner { position: relative; }
+
+  /* stack cards single column on small phones */
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+  .hero-sub {
+    font-size: 24px;
+  }
+  .hero-desc {
+    font-size: 16px;
+  }
+    .specials-header h2 { font-size: 26px; }
+      .hero-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Make the image ignore the page-inner width and fill the viewport */
+  .hero-image {
+    width: 100vw;               /* full viewport width */
+    max-width: 100vw;
+    height: auto;               /* keep aspect ratio */
+    border-radius: 0;           /* remove rounded corners for full-bleed */
+    margin-left: 50%;           /* center using transform */
+    transform: translateX(-50%);
+    object-fit: cover;          /* crop nicely if needed */
+    display: block;
+  }
+
+  /* If the image is inside a wrapper, ensure wrapper doesn't clip */
+  .hero-image-wrap {
+    width: 100%;
+    overflow: visible;
+    padding: 0;
+  }
+
+  /* Optional: reduce hero padding so image touches edges */
+  .hero {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+
+}
+
+@media (max-width: 480px) {
+  .header-inner { height: 72px; }
+  .logo { height: 40px; }
+  .hero-desc { font-size: 14px; }
+  .hero-image { height: 220px; }
+  .hero-title { font-size: 28px; }
+  .hero-sub { font-size: 20px; }
 }

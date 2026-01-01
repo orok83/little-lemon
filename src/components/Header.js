@@ -1,13 +1,15 @@
 import Nav from './Nav';
 
-function Header() {
+export default function Header() {
   return (
-    <header className="header">
-      <img src="/assets/Logo.png" alt="Little Lemon Logo" />
+<header className="header">
+  <div className="page-inner header-inner">
+    <img src="/assets/Logo.png" className="logo" alt="logo" />
+    <div className="nav-container">
+      <Nav />   {/* Nav renders .menu-icon and .nav-links */}
+    </div>
+  </div>
+</header>
 
-      <Nav />
-    </header>
   );
 }
-
-export default Header;
