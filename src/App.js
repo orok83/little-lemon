@@ -1,16 +1,12 @@
-// import logo from './logo.svg';
+import { BrowserRouter } from 'react-router-dom';
+import Main from './Main';
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
-      <Header />
+    <BrowserRouter>
       <Main />
-      <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

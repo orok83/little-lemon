@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
+    <div className="nav-container">
       <button
         className="menu-icon"
         aria-label={open ? 'Close menu' : 'Open menu'}
@@ -19,14 +20,14 @@ export default function Nav() {
 
       <nav>
         <ul className={`nav-links ${open ? 'active' : ''}`}>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/menu">Menu</a></li>
-          <li><a href="/reservations">Reservations</a></li>
-          <li><a href="/order">Order Online</a></li>
-          <li><a href="/login">Login</a></li>
+          <li><Link to="/" onClick={() => setOpen(false)}>Home</Link></li>
+          <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
+          <li><Link to="/menu" onClick={() => setOpen(false)}>Menu</Link></li>
+          <li><Link to="/booking" onClick={() => setOpen(false)}>Reservations</Link></li>
+          <li><Link to="/order" onClick={() => setOpen(false)}>Order Online</Link></li>
+          <li><Link to="/login" onClick={() => setOpen(false)}>Login</Link></li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 }
