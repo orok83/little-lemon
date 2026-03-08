@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 export default function BookingForm({ availableTimes, dispatch, onSubmitReservation }) {
+
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -12,11 +13,13 @@ export default function BookingForm({ availableTimes, dispatch, onSubmitReservat
     onSubmitReservation(formData);
   };
 
-  const handleDateChange = (e) => {
+const handleDateChange = (e) => {
     const newDate = e.target.value;
     setDate(newDate);
-    dispatch({ type: 'update', payload: newDate });
-  };
+    // استدعاء dispatch
+    dispatch({ type: 'UPDATE_TIMES', payload: newDate });
+};
+
 
   return (
     <form onSubmit={handleSubmit} className="booking-form">

@@ -1,12 +1,18 @@
 export default function Footer() {
   return (
-    <footer>
+    <footer className="footer" role="contentinfo">
       <div className="page-inner footer-inner">
-        <div className="footer-col">
-          <img src="/assets/Logo.png" alt="Little Lemon" style={{width: '100px'}} />
-        </div>
+        
+        <section className="footer-col" aria-labelledby="footer-logo">
+          <img
+            src="/assets/Logo.png"
+            alt="Little Lemon Restaurant Logo"
+            style={{ width: '100px' }}
+            id="footer-logo"
+          />
+        </section>
 
-        <div className="footer-col">
+        <nav className="footer-col" aria-label="Doormat Navigation">
           <h3>Doormat Navigation</h3>
           <ul>
             <li><a href="/">Home</a></li>
@@ -16,25 +22,25 @@ export default function Footer() {
             <li><a href="/order">Order Online</a></li>
             <li><a href="/login">Login</a></li>
           </ul>
-        </div>
+        </nav>
 
-        <div className="footer-col">
+        <address className="footer-col" aria-label="Contact Information">
           <h3>Contact</h3>
           <ul>
-            <li>Address: 123 Town St, Chicago</li>
-            <li>Phone: +1 (312) 555-0123</li>
-            <li>Email: contact@littlelemon.com</li>
+            <li>123 Town St, Chicago</li>
+            <li>Phone: <a href="tel:+13125550123">+1 (312) 555-0123</a></li>
+            <li>Email: <a href="mailto:contact@littlelemon.com">contact@littlelemon.com</a></li>
           </ul>
-        </div>
+        </address>
 
-        <div className="footer-col">
+        <nav className="footer-col" aria-label="Social Media Links">
           <h3>Social Media</h3>
           <ul>
             <li><a href="https://facebook.com">Facebook</a></li>
             <li><a href="https://instagram.com">Instagram</a></li>
             <li><a href="https://twitter.com">Twitter</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
     </footer>
   );

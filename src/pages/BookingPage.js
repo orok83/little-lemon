@@ -10,21 +10,30 @@ export default function BookingPage({ availableTimes, dispatch }) {
   };
 
   return (
-    <main className="page-inner booking-page">
-      <h1>Reserve a Table</h1>
+    <main className="page-inner booking-page" aria-labelledby="booking-heading">
+      <h1 id="booking-heading">Reserve a Table</h1>
+
       <BookingForm
         availableTimes={availableTimes}
         dispatch={dispatch}
         onSubmitReservation={handleReservation}
       />
 
-      <h2>Available Slots</h2>
-      <ul className="booking-slots">
-        {availableTimes && availableTimes.map((time) => {
-          const booked = bookings.some(b => b.time === time);
-          return <BookingSlot key={time} time={time} booked={booked} />;
-        })}
-      </ul>
+      <section aria-labelledby="slots-heading">
+        <h2 id="slots-heading">Available Slots</h2>
+        <ul className="booking-slots">
+          {availableTimes && availableTimes.map((time) => {
+            const booked = bookings.some(b => b.time === time);
+            return (
+              <BookingSlot
+                key={time}
+                time={time}
+                booked={booked}
+              />
+            );
+          })}
+        </ul>
+      </section>
     </main>
   );
 }

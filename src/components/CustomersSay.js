@@ -7,27 +7,28 @@ export default function CustomersSay() {
   ];
 
   return (
-    <section className="customers-say">
+    <section className="customers-say" aria-labelledby="testimonials-heading">
       <div className="page-inner">
-        <h2 className="section-title">Testimonials</h2>
+        <h2 id="testimonials-heading" className="section-title">Testimonials</h2>
+        
         <div className="testimonials">
           {testimonials.map(t => (
-<div key={t.id} className="testimonial">
-  {/* First line: stars left */}
-  <div className="testimonial-stars">
-    <div className="stars">{'★'.repeat(t.stars)}</div>
-  </div>
+            <article key={t.id} className="testimonial" aria-labelledby={`testimonial-${t.id}-name`}>
+              
+              {/* Stars */}
+              <div className="testimonial-stars" aria-label={`${t.stars} out of 5 stars`}>
+                <span className="stars" aria-hidden="true">{'★'.repeat(t.stars)}</span>
+              </div>
 
-  {/* Second line: image left, name centered */}
-  <div className="testimonial-header">
-    <img src={t.image} alt={t.name} className="testimonial-img" />
-    <span className="testimonial-name">{t.name}</span>
-  </div>
+              {/* Image + Name */}
+              <header className="testimonial-header">
+                <img src={t.image} alt={`Photo of ${t.name}`} className="testimonial-img" />
+                <h3 id={`testimonial-${t.id}-name`} className="testimonial-name">{t.name}</h3>
+              </header>
 
-  {/* Third line: review text */}
-  <p className="testimonial-text">{t.text}</p>
-</div>
-
+              {/* Review text */}
+              <p className="testimonial-text">{t.text}</p>
+            </article>
           ))}
         </div>
       </div>
