@@ -3,11 +3,12 @@ import Specials from '../components/Specials';
 import CustomersSay from '../components/CustomersSay';
 import Chicago from '../components/Chicago';
 
-export default function Homepage() {
+export default function Homepage({ specialsData }) {
   return (
     <>
+    
       <CallToAction />
-      <Specials />
+      <Specials specialsData={specialsData} />
       <CustomersSay />
       <Chicago />
     </>

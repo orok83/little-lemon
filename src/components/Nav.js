@@ -23,9 +23,10 @@ export default function Nav() {
           <li><Link to="/" onClick={() => setOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
           <li><Link to="/menu" onClick={() => setOpen(false)}>Menu</Link></li>
-          <li><Link to="/booking" onClick={() => setOpen(false)}>Reservations</Link></li>
+          <li><Link to="/booking">Reservations</Link></li>
           <li><Link to="/order" onClick={() => setOpen(false)}>Order Online</Link></li>
           <li><Link to="/login" onClick={() => setOpen(false)}>Login</Link></li>
+          
         </ul>
       </nav>
     </div>
