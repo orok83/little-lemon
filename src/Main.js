@@ -1,3 +1,7 @@
+
+
+import { initializeTimes, updateTimes } from './bookingReducer'; 
+
 import { useReducer } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
@@ -7,17 +11,7 @@ import Footer from './components/Footer';
 import MenuPage from './pages/MenuPage';
 import AboutPage from './pages/AboutPage';
 
-// Initialize available times
-const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-};
 
-const updateTimes = (state, action) => {
-  if (action.type === 'UPDATE_TIMES') {
-    return initializeTimes();
-  }
-  return state;
-};
 
 const specialsData = [
   { id: 1, title: "Greek Salad", price: "$12.99", description: "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese.", image: "greek_salad.jpg" },

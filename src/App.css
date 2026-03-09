@@ -429,11 +429,14 @@ footer {
   text-align: center;
   font-weight: bold;
 }
-.booking-slot.available {
-  background: #e0ffe0;
-  color: var(--primary-green);
-}
+
+
 .booking-slot.booked {
-  background: #ffe0e0;
-  color: var(--secondary-orange);
+    color: #ccc;
+    text-decoration: line-through;
+    background-color: #f0f0f0;
+}
+.booking-slot.available {
+    color: #495E57;
+    font-weight: bold;
 }
