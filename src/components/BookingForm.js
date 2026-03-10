@@ -30,20 +30,23 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="booking-form" aria-label="Booking Form">
-            {/* حقل التاريخ مع منع اختيار تواريخ قديمة (Step 1) */}
+        <form 
+            onSubmit={handleSubmit} 
+            className="booking-form" 
+            aria-label="Booking Form" // وسم دلالي للنموذج (Step 1)
+        >
+            {/* الخطوة 3: استخدام htmlFor لربط التسمية بالـ id الخاص بالحقل */}
             <label htmlFor="res-date">Choose date</label>
             <input
                 type="date"
-                id="res-date"
+                id="res-date" // يجب أن يطابق htmlFor
                 min={new Date().toISOString().split('T')[0]}
                 value={date}
                 onChange={handleDateChange}
                 required
-                aria-required="true"
+                aria-required="true" // سمة ARIA للحقول المطلوبة (Step 2)
             />
 
-            {/* حقل الوقت (Step 1) */}
             <label htmlFor="res-time">Choose time</label>
             <select
                 id="res-time"
@@ -51,6 +54,7 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
                 onChange={(e) => setTime(e.target.value)}
                 required
                 aria-required="true"
+                aria-label="Select booking time" // وصف إضافي لقارئ الشاشة
             >
                 <option value="">Select a time</option>
                 {availableTimes && availableTimes.map((t) => (
@@ -58,7 +62,6 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
                 ))}
             </select>
 
-            {/* حقل عدد الضيوف مع قيود HTML5 (Step 1) */}
             <label htmlFor="guests">Number of guests</label>
             <input
                 type="number"
@@ -72,7 +75,6 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
                 aria-required="true"
             />
 
-            {/* حقل المناسبة (Step 1) */}
             <label htmlFor="occasion">Occasion</label>
             <select
                 id="occasion"
@@ -86,13 +88,13 @@ export default function BookingForm({ availableTimes, dispatch, submitForm }) {
                 <option value="Anniversary">Anniversary</option>
             </select>
 
-            {/* زر الإرسال يتم تعطيله إذا كان النموذج غير صالح (Step 2) */}
+            {/* الخطوة 2: إضافة aria-label="On Click" لزر الإرسال كما هو مطلوب في التمرين */}
             <input 
                 type="submit" 
                 value="Make Your Reservation" 
                 className={`yellow-btn ${!isFormValid ? 'disabled' : ''}`}
                 disabled={!isFormValid}
-                aria-label="On Click"
+                aria-label="On Click" // السمة المطلوبة تحديداً في التمرين
             />
         </form>
     );
