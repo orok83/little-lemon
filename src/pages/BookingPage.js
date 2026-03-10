@@ -23,14 +23,14 @@ export default function BookingPage({ availableTimes, dispatch, submitForm }) {
             {/* عرض الحجوزات السابقة */}
             {pastBookings.length > 0 && (
                 <div className="past-bookings">
-                    <h2>حجوزاتك السابقة</h2>
+                    <h2>Past reservations</h2>
                     <table className="bookings-table">
                         <thead>
                             <tr>
-                                <th>التاريخ</th>
-                                <th>الوقت</th>
-                                <th>الضيوف</th>
-                                <th>المناسبة</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Guests</th>
+                                <th>Occasion</th>
                             </tr>
                         </thead>
                         <tbody>

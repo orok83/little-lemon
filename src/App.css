@@ -408,13 +408,7 @@ footer {
   border-radius: 8px;
   border: 1px solid #ccc;
 }
-.booking-form input[type="submit"] {
-  background: var(--primary-yellow);
-  color: var(--dark-charcoal);
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-}
+
 .booking-slots {
   list-style: none;
   padding: 0;
@@ -439,4 +433,49 @@ footer {
 .booking-slot.available {
     color: #495E57;
     font-weight: bold;
+}
+
+
+
+
+
+
+.past-bookings {
+    margin-top: 40px;
+    padding: 20px;
+    /* background: #f4f4f4; */
+    border-radius: 8px;
+}
+
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.bookings-table th, .bookings-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.bookings-table th {
+    background-color: #495E57;
+    color: white;
+}
+
+.clear-btn {
+    background-color: #ee3333;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.yellow-btn.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    border: 1px solid #999;
 }
