@@ -1,43 +1,60 @@
-import { useState } from 'react';
+// src/pages/BookingPage.js
+import { useState, useEffect } from 'react';
 import BookingForm from '../components/BookingForm';
-import BookingSlot from '../components/BookingSlot';
 
-export default function BookingPage({ availableTimes, dispatch }) {
-    // حالة لتخزين الحجوزات المؤكدة
-    const [bookings, setBookings] = useState([]);
+export default function BookingPage({ availableTimes, dispatch, submitForm }) {
+    const [pastBookings, setPastBookings] = useState([]);
 
-    // دالة لمعالجة الحجز الجديد عند إرسال النموذج
-    const handleReservation = (formData) => {
-        // إضافة الحجز الجديد للمصفوفة
-        setBookings([...bookings, formData]);
-        alert(`Booking confirmed for: ${formData.time}`);
-    };
+    // جلب الحجوزات عند تحميل الصفحة
+    useEffect(() => {
+        const savedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        setPastBookings(savedBookings);
+    }, []);
 
     return (
         <main className="page-inner booking-page">
             <h1>Reserve a Table</h1>
-            {/* تمرير دالة handleReservation للنموذج */}
             <BookingForm 
                 availableTimes={availableTimes} 
                 dispatch={dispatch} 
-                onSubmitReservation={handleReservation} 
+                submitForm={submitForm} 
             />
 
-            <h2>Available Slots</h2>
-            <ul className="booking-slots">
-                {/* عرض المواعيد والتأكد من حالة كل موعد */}
-                {availableTimes && availableTimes.map((time) => {
-                    // التحقق مما إذا كان هذا الوقت موجوداً في الحجوزات
-                    const isBooked = bookings.some(b => b.time === time);
-                    return (
-                        <BookingSlot 
-                            key={time} 
-                            time={time} 
-                            booked={isBooked} 
-                        />
-                    );
-                })}
-            </ul>
+            {/* عرض الحجوزات السابقة */}
+            {pastBookings.length > 0 && (
+                <div className="past-bookings">
+                    <h2>حجوزاتك السابقة</h2>
+                    <table className="bookings-table">
+                        <thead>
+                            <tr>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>الضيوف</th>
+                                <th>المناسبة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {pastBookings.map((booking, index) => (
+                                <tr key={index}>
+                                    <td>{booking.date}</td>
+                                    <td>{booking.time}</td>
+                                    <td>{booking.guests}</td>
+                                    <td>{booking.occasion}</td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                        {/* <button 
+                            className="clear-btn" 
+                            onClick={() => {
+                                localStorage.removeItem('bookings');
+                                setPastBookings([]);
+                            }}
+                        >
+                            مسح جميع الحجوزات
+                        </button> */}
+                </div>
+                
+            )}
         </main>
     );
 }

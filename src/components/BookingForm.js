@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function BookingForm({ availableTimes, dispatch, onSubmitReservation }) {
+export default function BookingForm({ availableTimes, dispatch, submitForm }) {
 
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -10,7 +10,7 @@ export default function BookingForm({ availableTimes, dispatch, onSubmitReservat
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { date, time, guests, occasion };
-    onSubmitReservation(formData);
+    submitForm(formData);
   };
 
 const handleDateChange = (e) => {
